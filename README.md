@@ -1,6 +1,10 @@
 # Meet-App
 
-A serverless, progressive web application built with React using test-driven development which uses the Google Calendar API to fetch upcoming events
+A serverless, progressive web application built with React using test-driven development which uses the Google Calendar API to fetch upcoming events.
+
+The serverless functions will enable fast and easy deployment, scalability and cost efficiency.
+
+This app specifically will use AWS Lambda for authentication, authorisation, geolocation services and event search.
 
 ## User Stories
 
@@ -149,4 +153,3 @@ A serverless, progressive web application built with React using test-driven dev
 . When the main page re-renders with that cities events
 <br>
 . Then it should display the data for the upcoming events in a chart
-
