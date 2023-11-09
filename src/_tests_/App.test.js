@@ -17,4 +17,9 @@ describe("<App /> component", () => {
     // eslint-disable-next-line
     expect(AppDOM.querySelector("#city-search")).toBeInTheDocument();
   });
+
+  test("render EventCount", () => {
+    // eslint-disable-next-line
+    expect(AppDOM.querySelector("#event-count")).toBeInTheDocument();
+  });
 });
