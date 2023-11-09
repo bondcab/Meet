@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import Event from "../components/Event";
+import user from "@testing-library/user-event";
 
 describe("<Event /> component", () => {
   let EventComponent;
@@ -32,5 +33,33 @@ describe("<Event /> component", () => {
     const button = EventComponent.queryByText("Show Details");
 
     expect(button).toBeInTheDocument();
+  });
+
+  test("by default, events details section should be hidden", () => {
+    // eslint-disable-next-line
+    const eventDetails = EventComponent.queryByText("About event");
+
+    expect(eventDetails).not.toBeInTheDocument();
+  });
+
+  test("shows the event details section when user clicks on the 'show details' button", async () => {
+    // eslint-disable-next-line
+    const button = EventComponent.queryByText("Show Details");
+    await user.click(button);
+    // eslint-disable-next-line
+    const eventDetails = EventComponent.queryByText("About event:");
+    expect(button.textContent).toBe("Hide Details");
+
+    expect(eventDetails).toBeInTheDocument();
+  });
+
+  test("hides the details section when the user clicks on the 'hide details' button", async () => {
+    // eslint-disable-next-line
+    const button = EventComponent.queryByText("Show Details");
+    await user.click(button);
+    await user.click(button);
+    // eslint-disable-next-line
+    const eventDetails = EventComponent.queryByText("About event:");
+    expect(eventDetails).not.toBeInTheDocument();
   });
 });
