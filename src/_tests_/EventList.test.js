@@ -1,6 +1,7 @@
-import { render } from "@testing-library/react";
+import { render, within, waitFor } from "@testing-library/react";
 import EventList from "../components/EventList";
 import { getEvents } from "../api";
+import App from "../App";
 
 describe("<EventList /> component", () => {
   let EventListComponent;
@@ -21,5 +22,23 @@ describe("<EventList /> component", () => {
     expect(EventListComponent.getAllByRole("listitem")).toHaveLength(
       allEvents.length
     );
+  });
+});
+
+describe("<EventList /> integration", () => {
+  test("renders a list of 32 events when the app is mounted and rendered", async () => {
+    // eslint-disable-next-line
+    const AppComponent = render(<App />);
+    // eslint-disable-next-line
+    const AppDOM = AppComponent.container.firstChild;
+    // eslint-disable-next-line
+    const EventListDOM = AppDOM.querySelector("#event-list");
+    // eslint-disable-next-line
+    await waitFor(() => {
+      // eslint-disable-next-line
+      const EventListItems = within(EventListDOM).queryAllByRole("listitem");
+      // eslint-disable-next-line
+      expect(EventListItems.length).toBe(32);
+    });
   });
 });
