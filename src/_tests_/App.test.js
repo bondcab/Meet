@@ -57,4 +57,22 @@ describe("<App /> integration", () => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
   });
+
+  test("Renders number of events specified by the user", async () => {
+    // eslint-disable-next-line
+    const AppComponent = render(<App />);
+    // eslint-disable-next-line
+    const AppDOM = AppComponent.container.firstChild;
+    // eslint-disable-next-line
+    const NumberOfEventsDOM = AppDOM.querySelector("event-count");
+    const NumberOfEventsInput =
+      within(NumberOfEventsDOM).queryByRole("textbox");
+
+    await userEvent.type(NumberOfEventsInput, "{backspace}{backspace}10");
+    // eslint-disable-next-line
+    const EventListDOM = AppDOM.querySelector("#event-list");
+    const allRenderedEventItems =
+      within(EventListDOM).queryAllByRole("listitem");
+    expect(allRenderedEventItems.length).toEqual(10);
+  });
 });
