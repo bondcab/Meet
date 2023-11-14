@@ -64,11 +64,9 @@ describe("<App /> integration", () => {
     // eslint-disable-next-line
     const AppDOM = AppComponent.container.firstChild;
     // eslint-disable-next-line
-    const NumberOfEventsDOM = AppDOM.querySelector("event-count");
-    const NumberOfEventsInput =
-      within(NumberOfEventsDOM).queryByRole("textbox");
+    const NumberOfEventsDOM = AppDOM.querySelector("#event-count");
 
-    await userEvent.type(NumberOfEventsInput, "{backspace}{backspace}10");
+    await userEvent.type(NumberOfEventsDOM, "{backspace}{backspace}10");
     // eslint-disable-next-line
     const EventListDOM = AppDOM.querySelector("#event-list");
     const allRenderedEventItems =

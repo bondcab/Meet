@@ -23,7 +23,6 @@ const App = () => {
         : allEvents.filter((event) => event.location === currentCity);
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
-    console.log("App.js currentNOE: ", currentNOE);
   };
 
   return (

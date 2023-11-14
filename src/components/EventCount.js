@@ -5,9 +5,13 @@ function EventCount({ setCurrentNOE, currentNOE }) {
 
   function handleOnChange(event) {
     setValueInput(event.target.value);
-    setCurrentNOE(event.target.value);
+    if (event.target.value === "") {
+      setCurrentNOE(32);
+    } else {
+      setCurrentNOE(event.target.value);
+    }
   }
-  console.log("EventCount.js currentNOE: ", currentNOE);
+
   return (
     <input id="event-count" value={valueInput} onChange={handleOnChange} />
   );
