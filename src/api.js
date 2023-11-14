@@ -61,10 +61,7 @@ export const getEvents = async () => {
 
   if (token) {
     removeQuery();
-    const url =
-      "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
-      "/" +
-      token;
+    const url = `https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
     const response = await fetch(url);
     const result = await response.json();
 
@@ -79,9 +76,9 @@ export const getAccessToken = async () => {
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
   if (!accessToken || tokenCheck.error) {
-    await localStorage.removeItem("access_token");
+    localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
-    const code = await searchParams.get("code");
+    const code = searchParams.get("code");
     if (!code) {
       const response = await fetch(
         "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
