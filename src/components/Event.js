@@ -26,7 +26,6 @@ function Event({ event }) {
           {hidden ? "Show Details" : "Hide Details"}
         </button>
       </li>
-      ;
     </div>
   );
 }
