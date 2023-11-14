@@ -8,19 +8,6 @@ import mockData from "./mock-data";
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
  */
-export const extractLocations = (events) => {
-  const extractedLocations = events.map((event) => event.location);
-  const locations = [...new Set(extractedLocations)];
-  return locations;
-};
-
-const checkToken = async (accessToken) => {
-  const response = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  );
-  const result = await response.json();
-  return result;
-};
 
 const removeQuery = () => {
   let newurl;
@@ -49,10 +36,21 @@ const getToken = async (code) => {
   return access_Token;
 };
 
-/**
- *
- * This function will fetch the list of all events
- */
+export const extractLocations = (events) => {
+  const extractedLocations = events.map((event) => event.location);
+  const locations = [...new Set(extractedLocations)];
+  return locations;
+};
+
+const checkToken = async (accessToken) => {
+  const response = await fetch(
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  );
+  const result = await response.json();
+  return result;
+};
+
+//  This function will fetch the list of all events
 
 export const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost")) {
@@ -64,13 +62,11 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" +
+      "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
     const response = await fetch(url);
     const result = await response.json();
-
-    console.log("Result from getEvents:", result);
 
     if (result) {
       return result.events;
