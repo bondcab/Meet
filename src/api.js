@@ -28,10 +28,10 @@ const getToken = async (code) => {
       encodeCode
   );
 
-  const { access_Token } = await response.json();
-  access_Token && localStorage.setItem("access_token", access_Token);
+  const { access_token } = await response.json();
+  access_token && localStorage.setItem("access_token", access_token);
 
-  return access_Token;
+  return access_token;
 };
 
 // Maps events and returns a list of locations. Uses Set so no duplicates
