@@ -1,25 +1,31 @@
 "use strict";
 
+// Google API object
 const { google } = require("googleapis");
+
+// Google calendar API
 const calendar = google.calendar("v3");
+
+// Scope of access. Read Only
 const SCOPES = [
   "https://www.googleapis.com/auth/calendar.events.public.readonly",
 ];
+
+// The values of client secret, client id and calendar id
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
+
+// Where Google OAuth2 will redirect after approval given
 const redirect_uris = ["https://bondcab.github.io/Meet/"];
 
+// Instance of OAuth2 class which uses Apps client ID, client secret and redirect URI
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
   redirect_uris[0]
 );
 
+// Lambda function which generates an authorization URL with the defined scopes. Should allow CORs access
 module.exports.getAuthURL = async () => {
-  /**
-   *
-   * Scopes array is passed to the `scope` option.
-   *
-   */
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: SCOPES,
@@ -37,9 +43,12 @@ module.exports.getAuthURL = async () => {
   };
 };
 
+// Lambda function for getting the access token
 module.exports.getAccessToken = async (event) => {
+  // Takes the code from the URL after Google AuthO2 approval given
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
+  // Runs OAuth2 getToken method with the extracted code. If successful will return response with token
   return new Promise((resolve, reject) => {
     oAuth2Client.getToken(code, (error, response) => {
       if (error) {
