@@ -56,7 +56,7 @@
 
       // The Lambda endpoint API link for the getAuthURL function
       const getAuthURL =
-        "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
+        "https://30661lpiv0.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
 
       // When 'Get OAuth URL' button if clicked a function will be called which will fetch the getAuthURL endpoint function
       // After clicking the 'Click to authorize' anchor element function will open a new tab to the Google OAuth signin window
@@ -85,7 +85,7 @@
 
       // The getToken Lambda function api endpoint
       const getToken =
-        "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/token";
+        "https://30661lpiv0.execute-api.eu-central-1.amazonaws.com/dev/api/token";
 
       // When 'Get Token' button is clicked function executed
       getAccessToken.onclick = function () {
@@ -113,7 +113,7 @@
       const getEvents = document.getElementById("getEvents");
       const events = document.getElementById("events");
       const getCalendarEvents =
-        "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
+        "https://30661lpiv0.execute-api.eu-central-1.amazonaws.com/dev/api/get-events";
 
       getEvents.onclick = function () {
         const { access_token } = JSON.parse(accessTokenElement.innerText);

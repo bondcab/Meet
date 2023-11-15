@@ -24,9 +24,10 @@ const removeQuery = () => {
 const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const response = await fetch(
-    "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/token/" +
+    "https://30661lpiv0.execute-api.eu-central-1.amazonaws.com/dev/api/token/" +
       encodeCode
   );
+
   const { access_Token } = await response.json();
   access_Token && localStorage.setItem("access_token", access_Token);
 
@@ -65,7 +66,7 @@ export const getEvents = async () => {
     removeQuery();
 
     // getEvents Lambda function api endpoint with added token
-    const url = `https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
+    const url = `https://30661lpiv0.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
 
     // Response should be the result of Lambda getCalendarEvents function
     const response = await fetch(url);
@@ -95,8 +96,9 @@ export const getAccessToken = async () => {
     // If no code in the search parameters when will run the Lambda getAuth function
     if (!code) {
       const response = await fetch(
-        "https://ha2p5d02y8.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+        "https://30661lpiv0.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
       );
+
       // Will take the authentication url returned from function and put in variable called authUrl and set URL to this
       // returning user to Google authentication window
       const result = await response.json();
