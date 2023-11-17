@@ -1,4 +1,5 @@
 import mockData from "./mock-data";
+import NProgress from "nprogress";
 
 //  * This function takes an events array, then uses map to create a new array with only locations.
 //  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
@@ -52,8 +53,10 @@ const checkToken = async (accessToken) => {
 
 //  This function will fetch the list of all events
 export const getEvents = async () => {
+  NProgress.start();
   // If request is coming from localhost then mock data will be returned
   if (window.location.href.startsWith("http://localhost")) {
+    NProgress.done();
     return mockData;
   }
 
