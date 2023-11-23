@@ -1,16 +1,29 @@
 import { useState } from "react";
 
-function EventCount({ setCurrentNOE, currentNOE }) {
+function EventCount({ setCurrentNOE, currentNOE, setErrorAlert }) {
   const [valueInput, setValueInput] = useState(32);
 
   function handleOnChange(event) {
-    setValueInput(event.target.value);
-    if (event.target.value === "") {
+    const inputValue = event.target.value;
+    setValueInput(inputValue);
+
+    if (inputValue === "") {
       setCurrentNOE(32);
     } else {
-      setCurrentNOE(event.target.value);
+      setCurrentNOE(parseFloat(inputValue));
     }
+
+    let errorText;
+    if (isNaN(inputValue) || inputValue.length <= 0) {
+      errorText = "Only positive numbers are allowed";
+    } else {
+      errorText = "";
+    }
+    setErrorAlert(errorText);
   }
+
+  console.log("Type of value input: ", isNaN(valueInput));
+  console.log("Value Input: ", valueInput);
 
   return (
     <div id="event-count">
