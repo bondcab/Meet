@@ -22,7 +22,7 @@ function Event({ event }) {
           </div>
         )}
 
-        <button onClick={handleOnClick}>
+        <button onClick={handleOnClick} className="details-btn">
           {hidden ? "Show Details" : "Hide Details"}
         </button>
       </li>
