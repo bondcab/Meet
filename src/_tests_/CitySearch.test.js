@@ -9,7 +9,13 @@ describe("<CitySearch /> component", () => {
   let CitySearchComponent;
   beforeEach(() => {
     // eslint-disable-next-line
-    CitySearchComponent = render(<CitySearch allLocations={[]} />);
+    CitySearchComponent = render(
+      <CitySearch
+        allLocations={[]}
+        setCurrentCity={() => {}}
+        setInfoAlert={() => {}}
+      />
+    );
   });
   test("renders text input", () => {
     // eslint-disable-next-line
@@ -39,7 +45,9 @@ describe("<CitySearch /> component", () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
+    CitySearchComponent.rerender(
+      <CitySearch allLocations={allLocations} setInfoAlert={() => {}} />
+    );
 
     // user types "Berlin" in city textbox
     // eslint-disable-next-line
@@ -68,7 +76,11 @@ describe("<CitySearch /> component", () => {
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
     CitySearchComponent.rerender(
-      <CitySearch allLocations={allLocations} setCurrentCity={() => {}} />
+      <CitySearch
+        allLocations={allLocations}
+        setCurrentCity={() => {}}
+        setInfoAlert={() => {}}
+      />
     );
     // eslint-disable-next-line
     const cityTextBox = CitySearchComponent.queryByRole("textbox");

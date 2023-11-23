@@ -7,7 +7,9 @@ describe("<EventCount /> component", () => {
 
   beforeEach(() => {
     // eslint-disable-next-line
-    EventCountComponent = render(<EventCount setCurrentNOE={() => {}} />);
+    EventCountComponent = render(
+      <EventCount setCurrentNOE={() => {}} setErrorAlert={() => {}} />
+    );
   });
 
   test("renders event count", () => {
