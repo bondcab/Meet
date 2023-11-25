@@ -60,6 +60,13 @@ export const getEvents = async () => {
     return mockData;
   }
 
+  // If user is not online events equals local storage data
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return events ? JSON.parse(events) : [];
+  }
+
   // Result of the getAccessToken function which should be the access token from local storage
   const token = await getAccessToken();
 
@@ -80,13 +87,6 @@ export const getEvents = async () => {
       localStorage.setItem("lastEvents", JSON.stringify(result.events));
       return result.events;
     } else return null;
-  }
-
-  // If user is not online events equals local storage data
-  if (!navigator.onLine) {
-    const events = localStorage.getItem("lastEvents");
-    NProgress.done();
-    return events ? JSON.parse(events) : [];
   }
 };
 
