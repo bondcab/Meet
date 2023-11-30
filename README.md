@@ -6,6 +6,18 @@ The serverless functions will enable fast and easy deployment, scalability and c
 
 This app specifically will use AWS Lambda for authentication, authorisation, geolocation services and event search.
 
+## Technologies:
+
+UI: React, CSS
+Unit and integration testing: Jest
+Acceptance Testing: Cucumber
+Serverless: AWS Lambda
+APIs: Google calendar
+App Monitoring: Atatus
+
+
+
+
 ## User Stories
 
 1.  As a user
