@@ -9,10 +9,15 @@ This app specifically will use AWS Lambda for authentication, authorisation, geo
 ## Technologies:
 
 UI: React, CSS
+
 Unit and integration testing: Jest
+
 Acceptance Testing: Cucumber
+
 Serverless: AWS Lambda
+
 APIs: Google calendar
+
 App Monitoring: Atatus
 
 
