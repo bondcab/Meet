@@ -5,7 +5,6 @@ function Event({ event }) {
   const [hidden, setHidden] = useState(true);
   const date = event.created;
   const dateShort = date.slice(0, 10);
-  const time = date.slice(14, 19);
 
   function handleOnClick() {
     setHidden(!hidden);
