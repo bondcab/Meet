@@ -27,7 +27,11 @@ function EventCount({ setCurrentNOE, currentNOE, setErrorAlert }) {
 
   return (
     <div id="event-count">
-      <input value={valueInput} onChange={handleOnChange} />
+      <input
+        value={valueInput}
+        onChange={handleOnChange}
+        className="eventCount"
+      />
     </div>
   );
 }

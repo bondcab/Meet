@@ -43,9 +43,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="banner">
+      {/* <div className="banner">
         <h1 className="heading">Meet</h1>
-      </div>
+      </div> */}
 
       <div className="alerts-container">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
@@ -53,6 +53,12 @@ const App = () => {
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
       <div className="searchCountContainer">
+        <img
+          src="https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="hot air balloons"
+          className="balloons"
+        />
+
         <div className="searchContainers">
           <CitySearch
             allLocations={allLocations}
@@ -71,6 +77,7 @@ const App = () => {
         <EventGenresChart events={events} />
         <CityEventsChart allLocations={allLocations} events={events} />
       </div>
+
       <EventList events={events} />
     </div>
   );
