@@ -203,9 +203,9 @@ function Event({ event }) {
   const [hidden, setHidden] = useState(true);
   const date = event.created;
   const dateShort = date.slice(0, 10);
-  const eventLocation = event.location;
-  const locationSplit = eventLocation.split(",");
-  const country = locationSplit[1];
+  // const eventLocation = event.location;
+  // const locationSplit = eventLocation.split(",");
+  // const country = locationSplit[1];
   // const countryCode = countryList.getCode(country);
   // console.log(countryCode);
 

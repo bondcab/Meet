@@ -59,26 +59,29 @@ const App = () => {
           className="balloons"
         />
 
-        <div className="searchContainers">
-          <CitySearch
-            allLocations={allLocations}
-            setCurrentCity={setCurrentCity}
-            setInfoAlert={setInfoAlert}
-          />
-          <EventCount
-            setCurrentNOE={setCurrentNOE}
-            currentNOE={currentNOE}
-            setErrorAlert={setErrorAlert}
-          />
+        <div className="eventContentContainer">
+          <div className="searchChartsContainer">
+            <div className="searchContainers">
+              <CitySearch
+                allLocations={allLocations}
+                setCurrentCity={setCurrentCity}
+                setInfoAlert={setInfoAlert}
+              />
+              <EventCount
+                setCurrentNOE={setCurrentNOE}
+                currentNOE={currentNOE}
+                setErrorAlert={setErrorAlert}
+              />
+            </div>
+            <div className="charts-container">
+              <EventGenresChart events={events} />
+              <CityEventsChart allLocations={allLocations} events={events} />
+            </div>{" "}
+          </div>
+
+          <EventList events={events} />
         </div>
       </div>
-
-      <div className="charts-container">
-        <EventGenresChart events={events} />
-        <CityEventsChart allLocations={allLocations} events={events} />
-      </div>
-
-      <EventList events={events} />
     </div>
   );
 };
