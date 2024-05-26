@@ -91,6 +91,7 @@ input[type="number"] {
   border-radius: 12px;
   padding-left: 10px;
   border: solid lightgray 1px;
+  font-weight: 600;
 }
 
 .details-btn {
@@ -243,6 +244,7 @@ input[type="number"] {
   margin: 1%;
   padding: 1%;
   border-radius: 12px;
+  font-weight: 500;
 }
 
 .flagContainer {
@@ -265,6 +267,7 @@ input[type="number"] {
   z-index: 2;
   border-radius: 30px;
   margin-bottom: 50px;
+  font-weight: 500;
 }
 
 .eventsChart {
@@ -273,6 +276,7 @@ input[type="number"] {
   border-radius: 30px;
   padding: 20px;
   margin-right: 10px;
+  font-weight: bold;
 }
 
 .eventInfo {
@@ -282,6 +286,7 @@ input[type="number"] {
   border: solid black 2px;
   display: flex;
   justify-content: center;
+  font-weight: 600;
 }
 
 .infoCenter {
